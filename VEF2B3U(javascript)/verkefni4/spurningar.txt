@@ -1,0 +1,19 @@
+2.
+Prototype er function fyrir objects.
+
+3.
+Prototypeið er skilar isbn innu. þannig að þegar þú kallar á einhverja bók og prototype-ið þá skilar það isbn.
+Þú hefur það ekki í book fallinu því annars þarftu alltaf að kalla á það fall í gegnum það í staðinn fyrir að hafa nafnið á bókinni .getIsbn. Það er miklu auðveldara ef þú ert t.d. með margar bækur og getur bara kallað á þetta með book.getIsbn í staðin fyrir að grafa sig inn í objectið.
+
+4.
+function Pizza (verd, staerd, alegg) {
+    this.staerd = staerd;
+		this.verd = verd;
+		this.alegg = alegg;
+};
+
+var bahamas = new Pizza( 2450, "Lítil", "skinka, ananas");
+
+var magherita = new Pizza( 3990, "Stór", "ostur, oregano");
+
+var veljasjalfur = new Pizza( 3250, "Mið", "ostur, skinka, sveppir");

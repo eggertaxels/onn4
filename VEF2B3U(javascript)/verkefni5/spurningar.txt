@@ -1,0 +1,56 @@
+2. 1% Error Objects
+
+	1. document.write("f');
+	
+			Gæsalappir eru ekki sama tegund. Gæsalappir lokast aldrei.
+			Invalid or unexpected token stendur í villunni.
+	
+	2. Document.write("f");
+	
+			Getur ekki skrifað skipun með stórum staf. Skipun verður að vera með lítinn staf.
+			Document er ekki function stendur í villunni.
+	
+	3. var list = ['John 1' 'John 2','John 3'];
+	
+			Það verður að vera komma á milli. Svo maður geti skrifað í næsta.
+			Unexpected string stendur í villunni.
+	
+	4. var b = {};
+	   b.getArea();
+		 
+			Tómt gildi. Og b er ekki fuction stendur í villunni. 
+		 
+	5. var width = 12;
+	   var area = width * height;
+		 
+		 	height er ekki til eða greint. Getur ekki sett undefined breytu inn í breytu sem gerir eitthvað.
+			height is not defined stendur í villunni.
+
+
+3. 0.5% - Scope. Hvað prentast í console og afhverju
+	(function() {
+	 var a = b = 5;
+	})();
+	console.log(b);
+		
+		Það prentast út 5. Vegna þess að þegar þú setur var a = b = 5; ertu í rauninni að gera breytu fyrir a og b sem gilda það sama.
+
+
+4. 0.5% - this. Hver er niðurstaðan, útskýrðu svar
+	var fullname = 'John Doe';
+	var obj = {
+	 fullname: 'Colin Ihrig',
+	 prop: {
+	 fullname: 'Aurelio De Rosa',
+	 getFullname: function() {
+	 return this.fullname;
+	 }
+	 }
+	};
+	console.log(obj.prop.getFullname());
+	var test = obj.prop.getFullname;
+	console.log(test());
+
+		Það prentar út Aurelio De Rosa og John Doe.
+		Fyrst kallar þú beint á aðferðina þar sem er búið að skrifast yfir. Þá keyrist aðferðin og Aurelio birtist.
+		Seinna í var test, kallar það beint í aðferðina án þess að Aurelio skrifist yfir. Það sækir bara beint í þessa aðferð. Þá birtist John.
