@@ -1,0 +1,55 @@
+1. Besta leiðin er nýjasta leiðin. DOM LEVEL 2 EVENT LISTENERS. Hún er best því eitt event getur triggerað mörg function í einu.
+    element.addEventlistener('event', functionName , false) ;
+    
+2. Callback er fall inn í falli. Það er fall sem keyrir um leið og hitt fallið er búið að keyra svo allur kóðinn frjósi ekki.
+Hérna er fall með engu callback:
+    $("#blue").hide(2000);
+    alert("Animation complete..");
+Og hérna er callback kóði svo það frjósi ekki allur kóði og allur annar kóði fái líka að gerast:
+    $("#red").hide(2000, function() {   
+    alert("Animation complete.."); // executes after animation
+    });
+    
+3. Eventloop ræður yfir callback functions. Þegar asynchronous function er keyrt þa er callback
+functon fært inni eventloop þanning javascript vinnur ekki med eventloop þangad til kodin sem
+er a eftir async function se keyrður.
+
+4.
+ function checkUsername(e, minLength) {
+  var target = e.target;
+ }
+ var el = document.getElementById('username');
+ el.addEventlistener('blur', function(e){
+  checkUsername(e,5);
+ }, false);
+
+5. Þetta er bool þar sem gerir annað hvort bubbling eða capturing.
+	Ef þú gerir true, þá geriru Capturing. Þá fer hann á ytri kóða og vinnur sér inn.
+	Ef þú gerir false þá geriru Bubbling. Fá byrjar forritið í innsta kóða og vinnur sér út.
+   Það er vanalega alltaf stillt á false.
+	 
+6. 
+	 a) stopPropagation er svo það komi í veg fyrir capturing eða handling. svo það keyri og vinnur sig ekki út né inn. keyrir bara einn hlut.
+	 Í kóðanum fyrir neðan myndi keyrast allt ef þú ýtir á p eða div, en span er með stopPropagation og þá keyrist það bara en ekki rest þótt að það sé innst.
+<script>
+$(document).ready(function(){
+    $("span").click(function(event){
+        event.stopPropagation();
+        alert("The span element was clicked.");
+    });
+    $("p").click(function(event){
+        alert("The p element was clicked.");
+    });
+    $("div").click(function(){
+        alert("The div element was clicked.");
+    });
+});
+</script>
+
+	b) preventDefault kemur i veg fyrir ad t.d ef notandi ýtir á slóð þa mun ekki opnast nýr gluggi og ekki gerast neitt.
+<a id="linkur" href="google.com">link</a>
+<script>
+document.getElementById("linkur").addEventListener("click", function(event){
+ event.preventDefault()
+});
+</script>
