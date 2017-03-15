@@ -1,6 +1,6 @@
 "use strict";
 
-	let elContainer = document.getElementById('myDiv'); 	
+	let elDiv = document.getElementById('myDiv'); 	
 
 	function Question(question, answers, correctAnswer) {
 		this.question = question; 	
@@ -45,43 +45,44 @@
 	};
   
 
-  var $counter = 0;
+  var teljari = 0;
   
   var score = 0;
   var wrongAnswers = 0;
       
-	elContainer.innerHTML = questions[$counter].getTemplate();
+	elDiv.innerHTML = questions[teljari].getTemplate();
         var bigDiv = document.getElementById('myDiv');
         var bigText = document.getElementById('text');
 
 
-elContainer.addEventListener('click', function(e) {
+elDiv.addEventListener('click', function(e) {
    var elCorrectAnswer = document.getElementById('correct');
   if(e.target == elCorrectAnswer) 
   {
     e.target.style.backgroundColor = "green";
     score++;
-		$counter++;
+		teljari++;
     alert("Rétt");
 	}
 	else if(e.target === bigDiv || e.target === bigText)
 		{
 			e.target.style.backgroundColor = "none";
-			$counter === $counter;
+			teljari === teljari;
+			alert("Reyndu aftur.");
 		}
   else 
   {
     e.target.style.backgroundColor = "red";
     wrongAnswers++;
-		$counter++;
+		teljari++;
     alert("Rangt");
   }
-    elContainer.innerHTML = questions[$counter].getTemplate();
+    elDiv.innerHTML = questions[teljari].getTemplate();
 });
   
-elContainer.addEventListener('click', function(e) {
-  if($counter == 4) {
-    elContainer.innerHTML = "";
+elDiv.addEventListener('click', function(e) {
+  if(teljari == 4) {
+    elDiv.innerHTML = "";
     document.write("Rétt svör: ", score, "<br>", "Röng svör: ", wrongAnswers);
   }
 });
