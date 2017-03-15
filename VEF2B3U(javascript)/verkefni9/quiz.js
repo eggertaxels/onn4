@@ -1,66 +1,87 @@
+"use strict";
 
-	//Dom element
-	let elbirtaspurningu = document.getElementById('myDiv'); 	
+	let elContainer = document.getElementById('myDiv'); 	
 
-//smiÃ°ur fyrir spurningu
-	function Spurning(spurning, moguleikar, svar) {
-		this.spurning = spurning; 					/* Spurning (strengur) */
-		this.moguleikar = moguleikar; 					/* fylki meÃ° svarmÃ¶guleikum */
-		this.svar = svar; 		/* RÃ©tt svar (strengur) */
+	function Question(question, answers, correctAnswer) {
+		this.question = question; 	
+		this.answers = answers; 					
+		this.correctAnswer = correctAnswer; 	
 	}
 
-// gogn (fylki af objectum) 
-	let spurningar = [
-			new Spurning("hvad hefur fjorar lappir og geltir", ["hundur","kottur","svin","belja"],"hundur"),
-            new Spurning("hvada planeta er med vatn og livandi verur", ["jupiter","tunglid","florida","jord"],"jord"),
-            new Spurning("1+1", ["7","8","2","17"],"2"),
-            new Spurning("Hvad er rett?", ["rett","correct","akkurat","ekkirett"],"ekkirett"),
+	let questions = [
+				new Question('Hvad er graent?', ['gras', 'himininn', 'svartur veggur', 'simpsons'], 'gras'),
+				new Question('Hvad heitir mikki meira en mikki?', ['Hus', 'Mus', 'Lus'], 'Mus'),
+				new Question('Hvad eru margir stafir í 3?', ['1', '2', '3'], '1'),
+				new Question('Hvad geltir?', ['kottur', 'hundur', 'Hamstur', 'Api'], 'hundur'),
 		];
 
-// Template
-	Spurning.prototype.getTemplate = function(){
-	 	let tmplmoguleikar = "";
-	 	for(let i = 0; i < this.moguleikar.length; i++) {
-	 	if(this.moguleikar[i] === this.svar)
-            {
-                tmplmoguleikar += "<div id='rett'>" +  this.moguleikar[i] + "</div>";
-            }
-            else{
-	 		    tmplmoguleikar += "<div id='id'" + i + "'>" +  this.moguleikar[i] + "</div>";
-            }
+  
+	function shuffleArray(array) {
+	 let m = array.length, t, i;
+	 while (m) {
+			 i = Math.floor(Math.random() * m--);
+			 t = array[m];
+			 array[m] = array[i];
+			 array[i] = t;
+	 }
+	}
+
+	shuffleArray(questions);  
+  
+
+	Question.prototype.getTemplate = function(){
+	 	let tmplAnswers = "";
+	 	for(let i = 0; i < this.answers.length; i++) {
+      if(this.answers[i] == this.correctAnswer)
+      {
+        tmplAnswers += "<div id='correct'>" + this.answers[i] + "</div>";
+      }
+      else 
+      {
+	 		   tmplAnswers += "<div id='active'>" + this.answers[i] + "</div>";
+      }
 	 	}
-	 	return "<h1 id='text'>" + this.spurning + "</h1>" + tmplmoguleikar;
-	 		
-	};	
-        
-        /*for (i = 0; i < spurningar.length; i++) {
-            elbirtaspurningu.innerHTML = spurningar[i].getTemplate();
-        }*/
-		//birta spurningu
-var counter = 0;
-        elbirtaspurningu.innerHTML = spurningar[counter].getTemplate();
-		var elRettsvar = document.getElementById('rett');
+	 	return "<h2 id='text'>" + this.question + "</h2>" + tmplAnswers;	
+	};
+  
+
+  var $counter = 0;
+  
+  var score = 0;
+  var wrongAnswers = 0;
+      
+	elContainer.innerHTML = questions[$counter].getTemplate();
         var bigDiv = document.getElementById('myDiv');
         var bigText = document.getElementById('text');
-/*document.getElementById("id2").onclick = function() {litur3()};
-        function litur3() {
-    document.getElementById("id2").style.backgroundColor = "red";
-}*/
-elbirtaspurningu.addEventListener("click",function(e) {
-	// e.target was the clicked element
-	if(e.target === elRettsvar)
-		{
-            counter++;
-			e.target.style.backgroundColor = "green";
-            elbirtaspurningu.innerHTML = spurningar[counter].getTemplate();
-		}
-    else if(e.target === bigDiv || e.target === bigText)
+
+
+elContainer.addEventListener('click', function(e) {
+   var elCorrectAnswer = document.getElementById('correct');
+  if(e.target == elCorrectAnswer) 
+  {
+    e.target.style.backgroundColor = "green";
+    score++;
+		$counter++;
+    alert("Rétt");
+	}
+	else if(e.target === bigDiv || e.target === bigText)
 		{
 			e.target.style.backgroundColor = "none";
+			$counter === $counter;
 		}
-	else{
-        counter++;
-		e.target.style.backgroundColor = "red";
-        elbirtaspurningu.innerHTML = spurningar[counter].getTemplate();
-	}  
-}, false);
+  else 
+  {
+    e.target.style.backgroundColor = "red";
+    wrongAnswers++;
+		$counter++;
+    alert("Rangt");
+  }
+    elContainer.innerHTML = questions[$counter].getTemplate();
+});
+  
+elContainer.addEventListener('click', function(e) {
+  if($counter == 4) {
+    elContainer.innerHTML = "";
+    document.write("Rétt svör: ", score, "<br>", "Röng svör: ", wrongAnswers);
+  }
+});
