@@ -1,0 +1,10 @@
+{
+	"myndirArray":[
+		{
+			"crust": "original",
+			"toppings":["cheese, pepperoni, garlic"],
+            "status": "cooking",
+            "cusomer": ["Kári, 7892314"]
+		}
+	]
+}

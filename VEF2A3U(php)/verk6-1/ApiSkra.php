@@ -53,12 +53,13 @@
 <html>
 <head>
 	<title>JSON sýnidæmi</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- tafla með gengisupplýsingum -->
 <table>
-     <tr>
+     <tr class="adal">
         <th>Fyrirtæki</th>
         <th>Bensín</th>
          <th>Bensín Afsláttur</th>

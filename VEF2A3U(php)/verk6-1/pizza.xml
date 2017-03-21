@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pizzapontun>
+
+  <pizza>
+    <crust>original</crust>
+    <toppings>cheese, pepperoni, garlic</toppings>
+    <status>cooking</status>
+    <customer>Jónas, 6564523</customer>
+  </pizza>
+
+</pizzapontun>

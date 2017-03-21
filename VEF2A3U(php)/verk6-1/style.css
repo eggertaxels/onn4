@@ -1,0 +1,22 @@
+table, td, th {
+    border: 1px solid black;
+    font-size: 1.2em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    text-align: left;
+}
+.adal th:hover {
+   background-color: none; 
+}
+tr:hover {
+    background-color: aqua;
+}
+.adal:hover {
+    background-color: white;
+}
