@@ -17,7 +17,7 @@ if (!$_SESSION['logon']){
     <form action="signout.php" method="post">
         <input type="submit" value="LOGOUT">
     </form>
-	<h1><?php echo "<h1>" . $_SESSION['name'] . "</h1><h2>" . $_SESSION['mail'] . "</h2>";
+	<h1><?php echo "<h1> Velkominn " . $_SESSION['name'] . ".</h1><h2> Mailið þitt er " . $_SESSION['email'] . "</h2>";
          ?>
     <form action="breytauppl.php" method="post"><br>
            Nýtt nafn<br>
@@ -26,6 +26,7 @@ if (!$_SESSION['logon']){
         <input type="password" name="pass_ga" required><br>
         <input value="Accept" type="submit">
     </form>
+		<h5>ATH: Þú verður færður sjálfkrafa á byrjunarsíðu þótt að gögn uppfærist ekki.</h5>
     <div>
 </body>
 </html>
