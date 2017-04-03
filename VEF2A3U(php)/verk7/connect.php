@@ -3,7 +3,7 @@ try{
 	# Hér þarf að breyta dbname, notendanafni og lykilorði
 	$source = 'mysql:host=127.0.0.1;dbname=PHP_Verkefni7';
 	$user = 'root';
-	$password = '12345678';
+	$password = '****';
 	# tegund og nafn á server, nafn á db og aðgangur
 	$pdo = new PDO($source, $user, $password);
 	# stillum hann af hvernig hann með höndlar villur
